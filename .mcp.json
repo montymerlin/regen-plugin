@@ -1,0 +1,30 @@
+{
+  "mcpServers": {
+    "regen-koi": {
+      "command": "npx",
+      "args": ["-y", "regen-koi-mcp@latest"],
+      "env": {
+        "KOI_API_ENDPOINT": "https://regen.gaiaai.xyz/api/koi",
+        "JENA_ENDPOINT": "https://regen.gaiaai.xyz/api/koi/fuseki/koi/sparql"
+      }
+    },
+    "regen-network": {
+      "command": "uvx",
+      "args": ["regen-python-mcp"],
+      "env": {
+        "REGEN_MCP_LOG_LEVEL": "INFO"
+      }
+    },
+    "regen-compute": {
+      "command": "npx",
+      "args": ["regen-compute"]
+    },
+    "registry-review": {
+      "command": "uvx",
+      "args": ["registry-review-mcp"],
+      "env": {
+        "REGISTRY_REVIEW_LLM_EXTRACTION_ENABLED": "true"
+      }
+    }
+  }
+}

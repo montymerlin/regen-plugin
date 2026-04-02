@@ -1,0 +1,12 @@
+{
+  "name": "regen-network",
+  "version": "0.1.0",
+  "description": "Access the Regen Network ecosystem — knowledge commons, blockchain ledger, ecological credit markets, and AI compute footprinting. Bundles KOI, Ledger, Compute, and Registry Review MCPs with guided skills for common workflows.",
+  "author": {
+    "name": "Regen Network"
+  },
+  "homepage": "https://regen.network",
+  "repository": "https://github.com/regen-network/regen-ai-claude",
+  "license": "Apache-2.0",
+  "keywords": ["regen", "ecocredits", "carbon", "biodiversity", "blockchain", "knowledge-graph", "ecological", "regenerative"]
+}
