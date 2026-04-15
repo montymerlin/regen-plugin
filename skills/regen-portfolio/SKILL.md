@@ -1,5 +1,5 @@
 ---
-name: regen-portfolio
+name: regen:portfolio
 description: >
   Analyse a wallet's ecological portfolio on Regen Network. Use when the user
   asks about "regen portfolio", "wallet impact", "analyze address",

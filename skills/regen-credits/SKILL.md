@@ -1,5 +1,5 @@
 ---
-name: regen-credits
+name: regen:credits
 description: >
   Explore ecocredits on Regen Network. Use when the user asks about "regen
   credits", "ecocredits", "credit classes", "credit types", "what credits

@@ -1,5 +1,5 @@
 ---
-name: regen-review
+name: regen:review
 description: >
   Review carbon credit project documents for registry compliance. Use when
   the user asks for a "registry review", "review project documents",

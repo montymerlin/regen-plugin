@@ -1,5 +1,5 @@
 ---
-name: regen-search
+name: regen:search
 description: >
   Search the Regen Network knowledge commons (KOI). Use when the user asks to
   "search regen", "search KOI", "what does regen know about", "find in regen
