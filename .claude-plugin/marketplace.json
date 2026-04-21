@@ -1,0 +1,22 @@
+{
+  "name": "regen-network",
+  "owner": {
+    "name": "Regen Network"
+  },
+  "plugins": [
+    {
+      "name": "regen-network",
+      "source": "./",
+      "description": "Access the Regen Network ecosystem — knowledge commons, blockchain ledger, ecological credit markets, and AI compute footprinting.",
+      "version": "0.1.1",
+      "author": {
+        "name": "Regen Network"
+      },
+      "homepage": "https://regen.network",
+      "repository": "https://github.com/regen-network/regen-ai-claude",
+      "license": "Apache-2.0",
+      "category": "sustainability",
+      "tags": ["regen", "ecocredits", "carbon", "biodiversity", "blockchain", "knowledge-graph", "ecological"]
+    }
+  ]
+}
