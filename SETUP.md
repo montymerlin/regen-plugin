@@ -1,14 +1,12 @@
 # Setup Guide
 
-## Claude Cowork (recommended)
+This package works anywhere MCP is supported. The host changes the setup flow and the UX, not the underlying capabilities.
 
-Cowork gives the full experience: one-click plugin install, skill slash commands in the `/` menu, and automatic MCP loading — no terminal required.
+## Cowork
 
-Download the latest `regen-network.plugin` from [Releases](https://github.com/MontyBryant/regen-network-cowork-plugin/releases) and open it in Claude Desktop, or install directly from a session:
+Cowork provides the smoothest user experience: one-click plugin install, skill slash commands in the `/` menu, and automatic MCP loading.
 
-```
-/plugin install https://github.com/MontyBryant/regen-network-cowork-plugin
-```
+Download the latest `regen-network.plugin` from the release flow you use internally, or install via the plugin marketplace when available.
 
 Once installed, type `/regen` to see all available skills.
 
@@ -16,7 +14,7 @@ Once installed, type `/regen` to see all available skills.
 
 ## Claude Code CLI
 
-Best for developers working in the terminal. If you're working inside a repo that already has `.mcp.json` configured (e.g. [bridging-worlds](https://github.com/MontyBryant/bridging-worlds)), the MCPs load automatically — no further setup needed.
+Best for developers working in the terminal. If you're working inside a repo that already has `.mcp.json` configured, the MCPs load automatically.
 
 To install globally across all projects:
 
@@ -29,24 +27,19 @@ claude mcp add regen-koi -- npx -y regen-koi-mcp@latest \
 # Ledger — blockchain data
 claude mcp add regen-network -- uvx regen-python-mcp
 
-# Compute — footprint and credit retirement (recommended: install at user level)
+# Compute — footprint and credit retirement
 claude mcp add -s user regen-compute -- npx regen-compute
 ```
 
-Or install KOI and Ledger via the upstream plugin marketplace:
-```bash
-/plugin marketplace add https://github.com/regen-network/regen-ai-claude
-/plugin install koi@regen-ai
-/plugin install ledger@regen-ai
-```
+Or install supported components through the upstream plugin marketplace when appropriate.
 
-Skills are not available as slash commands in Claude Code — use natural language instead ("search KOI for bioregional finance", "show me active governance proposals").
+Skills are typically invoked through natural language rather than slash commands in Claude Code.
 
 ---
 
 ## Cursor
 
-Add to `.cursor/mcp.json` in your project root, or `~/.cursor/mcp.json` for global config:
+Add the MCP servers to `.cursor/mcp.json` in your project root, or `~/.cursor/mcp.json` for global config:
 
 ```json
 {
@@ -81,13 +74,13 @@ Add to `.cursor/mcp.json` in your project root, or `~/.cursor/mcp.json` for glob
 }
 ```
 
-If you're cloning a repo that already includes `.cursor/mcp.json` with this config, no further action is needed.
+If your repo already includes this config, no further action is needed.
 
 ---
 
 ## VS Code
 
-**GitHub Copilot Chat** — add to your VS Code `settings.json`:
+**GitHub Copilot Chat** — add MCP servers to your `settings.json`:
 
 ```json
 {
@@ -108,12 +101,10 @@ If you're cloning a repo that already includes `.cursor/mcp.json` with this conf
 }
 ```
 
-**[Continue.dev](https://continue.dev)** — add servers to `~/.continue/config.json` under `"mcpServers"` using the same format as Cursor above.
+**Continue.dev** — add servers to `~/.continue/config.json` under `"mcpServers"` using the same format as Cursor.
 
 ---
 
-## Other MCP-compatible clients
+## Other MCP-Compatible Hosts
 
-Any client supporting the Model Context Protocol (Windsurf, Warp, JetBrains AI, Gemini CLI, Sourcegraph Cody, Amp) can use these MCPs. All servers use standard stdio transport. Use the same `command`/`args`/`env` configuration shown in the Cursor section above, and place it wherever that client stores its MCP config.
-
-See each client's MCP documentation for the exact config file location.
+Any host supporting MCP stdio servers can use this package. Reuse the same `command` / `args` / `env` definitions shown above and place them wherever that host stores MCP config.

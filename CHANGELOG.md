@@ -4,6 +4,12 @@ A narrative record of how this plugin evolves. Updated after significant work se
 
 ---
 
+## 2026-04-22 — v0.2.0: Host-agnostic package positioning
+
+Repositioned the repo as a host-agnostic MCP + skills package instead of a Claude-first plugin, while keeping Cowork called out as the smoothest UX where that remains true. `AGENTS.md` is now the canonical repo instruction file, `CLAUDE.md` is a thin compatibility wrapper, and README/SETUP were rewritten to describe the host differences as setup and experience differences rather than product identity.
+
+This keeps the plugin aligned with the newer compatibility-layer pattern across the workspace without changing the underlying MCP or skill behavior. See Decision 003.
+
 ## 2026-04-21 — v0.1.1: Dual-distribution packaging
 
 Added `marketplace.json` for Claude Code CLI installation via `claude plugins install`. Added Distribution section to CLAUDE.md covering Claude Code, Cowork (recommended), and other hosts. Cowork remains the recommended host for its slash command UX, but Claude Code CLI is now a first-class install path. See Decision 002.

@@ -1,57 +1,50 @@
 # Regen Network Plugin
 
-Access the Regen Network ecosystem from Claude — knowledge commons, blockchain ledger, ecological credit markets, and AI compute footprinting.
+Access the Regen Network ecosystem through a host-agnostic MCP + skills package: knowledge commons, blockchain ledger, ecological credit markets, and AI compute footprinting.
 
-## What's included
+## What's Included
 
-### MCP Servers (4)
+### MCP servers
 
 | Server | Package | What it connects to |
 |--------|---------|-------------------|
-| `regen-koi` | `regen-koi-mcp` (npm) | Knowledge commons — 86,000+ docs across forum, Notion, GitHub, podcasts, YouTube |
-| `regen-network` | `regen-python-mcp` (PyPI) | Regen Ledger blockchain — ecocredits, governance, marketplace, staking |
-| `regen-compute` | `regen-compute` (npm) | AI footprint estimation and ecological credit retirement |
-| `registry-review` | `registry-review-mcp` (PyPI) | Carbon credit project document review (planned skill — MCP included) |
+| `regen-koi` | `regen-koi-mcp` | Knowledge commons |
+| `regen-network` | `regen-python-mcp` | Regen Ledger blockchain |
+| `regen-compute` | `regen-compute` | AI footprint estimation and ecological credit retirement |
+| `registry-review` | `registry-review-mcp` | Carbon credit project document review |
 
-### Skills (9)
+### Skills
 
-| Skill | Trigger phrases | MCPs used |
-|-------|----------------|-----------|
-| `/regen-search` | "search regen", "search KOI", "find in regen commons" | KOI |
-| `/regen-digest` | "regen digest", "what's new at regen" | KOI |
-| `/regen-credits` | "ecocredits", "credit classes", "what credits are available" | Ledger + Compute |
-| `/regen-market` | "credit prices", "sell orders", "market trends" | Ledger + Compute |
-| `/regen-governance` | "proposals", "regen votes", "community pool" | Ledger |
-| `/regen-portfolio` | "wallet impact", "analyze address", "portfolio analysis" | Ledger |
-| `/regen-footprint` | "offset my session", "environmental cost", "retire credits" | Compute |
-| `/regen-code` | "regen architecture", "regen codebase", "trace call chain" | KOI |
-| `/regen-review` | "registry review", "document review" | Registry Review *(planned v0.2.0)* |
+| Skill | Purpose |
+|-------|---------|
+| `/regen-search` | Search the knowledge commons |
+| `/regen-digest` | Summarize what’s new |
+| `/regen-credits` | Explore ecocredit classes and batches |
+| `/regen-market` | Inspect sell orders and market activity |
+| `/regen-governance` | Track proposals and governance actions |
+| `/regen-portfolio` | Analyze wallet impact and holdings |
+| `/regen-footprint` | Estimate and potentially offset AI footprint |
+| `/regen-code` | Explore architecture and code relationships |
+| `/regen-review` | Registry review workflow |
 
-Skill slash commands are available in **Claude Cowork** (recommended). In other environments (Claude Code CLI, Cursor, VS Code), the same capabilities are available via natural language — just describe what you want and Claude will use the underlying MCP tools.
+## Host Positioning
 
-## Prerequisites
+This package is host-agnostic: any environment that supports MCP and markdown skills can use it.
 
-- **Node.js 18+** — required for KOI and Compute MCPs (`node --version` to check)
-- **`uv` Python package manager** — required for Ledger and Registry Review MCPs
-  ```bash
-  curl -LsSf https://astral.sh/uv/install.sh | sh
-  ```
-
-All MCP servers download automatically on first use — no manual build or install step.
+- **Cowork** remains the smoothest end-user experience because slash commands and automatic MCP loading are especially friendly there.
+- **Claude Code, Cursor, VS Code, and other MCP-capable hosts** use the same underlying MCPs and skills, typically through natural-language invocation and host-specific MCP configuration.
 
 ## Setup
 
-**Recommended: Claude Cowork** — install the `.plugin` file for one-click setup with full skill slash command support.
+See [SETUP.md](SETUP.md) for per-host installation and MCP configuration.
 
-For all other environments (Claude Code CLI, Cursor, VS Code, and other MCP-compatible clients), see **[SETUP.md](SETUP.md)**.
-
-## Optional environment variables
+## Optional Environment Variables
 
 | Variable | Purpose |
 |----------|---------|
-| `REGEN_WALLET_MNEMONIC` | Enable direct on-chain credit retirement (Compute MCP) |
-| `ECOBRIDGE_EVM_MNEMONIC` | Enable cross-chain token payments via ecoBridge (Compute MCP) |
-| `REGISTRY_REVIEW_ANTHROPIC_API_KEY` | Required for LLM-powered document extraction (Registry Review MCP) |
+| `REGEN_WALLET_MNEMONIC` | Enable direct on-chain credit retirement |
+| `ECOBRIDGE_EVM_MNEMONIC` | Enable cross-chain token payments via ecoBridge |
+| `REGISTRY_REVIEW_ANTHROPIC_API_KEY` | Enable LLM-powered document extraction |
 
 ## Links
 

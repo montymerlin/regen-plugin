@@ -1,7 +1,7 @@
 {
   "name": "regen-network",
-  "version": "0.1.1",
-  "description": "Access the Regen Network ecosystem — knowledge commons, blockchain ledger, ecological credit markets, and AI compute footprinting. Bundles KOI, Ledger, Compute, and Registry Review MCPs with guided skills for common workflows.",
+  "version": "0.2.0",
+  "description": "Host-agnostic MCP + skills package for the Regen Network ecosystem: knowledge commons, blockchain ledger, ecological credit markets, and AI compute footprinting.",
   "author": {
     "name": "Regen Network"
   },

@@ -24,3 +24,5 @@ Where this plugin could go. Items here are aspirations, not commitments. When an
 ## Decided
 
 - **Adopted agentic scaffold** — → Decision 001. `status: decided`
+- **Dual-distribution packaging** — → Decision 002. `status: decided`
+- **Reframe regen-network as a host-agnostic package** — → Decision 003. `status: decided`

@@ -36,3 +36,21 @@ Architectural decisions for the regen-network plugin, in lightweight ADR format.
 **Alternatives Considered:**
 - *Cowork only* — rejected. Claude Code CLI users working with Regen data should be able to install the plugin normally
 - *Add COMPATIBILITY.md* — deferred. SETUP.md already covers per-environment configuration; the Distribution section in CLAUDE.md is sufficient for now
+
+---
+
+## Decision 003 — Reframe regen-network as a host-agnostic package (2026-04-22)
+
+**Context:** The plugin had already been distributed to multiple hosts, but the repo still read as Claude-first and Cowork-led in a way that overstated the host identity of the package itself. The underlying product is really a bundle of MCP server definitions, markdown skills, and setup guidance that can be used anywhere MCP works. Cowork may still be the smoothest UX, but it should be described as a recommended host experience, not as the product’s defining context.
+
+**Decision:** Reframe the repo as a host-agnostic MCP + skills package. Add canonical `AGENTS.md`, turn `CLAUDE.md` into a thin compatibility wrapper, and rewrite README/SETUP so host differences are presented as setup and UX differences rather than product identity. Keep Cowork recommendations where they reflect real UX advantages.
+
+**Consequences:**
+- The repo now matches the compatibility-layer pattern used elsewhere in the workspace
+- Documentation is clearer for non-Claude MCP hosts without losing the Cowork recommendation
+- The underlying MCP and skill behavior remains unchanged
+- Future host-specific notes can live in setup docs without redefining the package itself
+
+**Alternatives Considered:**
+- *Leave the Claude-first framing in place* — rejected. It misdescribes what the package actually is
+- *Remove all host recommendations entirely* — rejected. Cowork still offers a materially better slash-command UX for some users

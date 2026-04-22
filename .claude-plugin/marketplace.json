@@ -7,8 +7,8 @@
     {
       "name": "regen-network",
       "source": "./",
-      "description": "Access the Regen Network ecosystem — knowledge commons, blockchain ledger, ecological credit markets, and AI compute footprinting.",
-      "version": "0.1.1",
+      "description": "Host-agnostic MCP + skills package for the Regen Network ecosystem: knowledge commons, blockchain ledger, ecological credit markets, and AI compute footprinting.",
+      "version": "0.2.0",
       "author": {
         "name": "Regen Network"
       },
