@@ -10,18 +10,18 @@
     },
     "regen-network": {
       "command": "uvx",
-      "args": ["regen-python-mcp"],
+      "args": ["--upgrade", "regen-python-mcp"],
       "env": {
         "REGEN_MCP_LOG_LEVEL": "INFO"
       }
     },
     "regen-compute": {
       "command": "npx",
-      "args": ["regen-compute"]
+      "args": ["-y", "regen-compute@latest"]
     },
     "registry-review": {
       "command": "uvx",
-      "args": ["registry-review-mcp"],
+      "args": ["--upgrade", "registry-review-mcp"],
       "env": {
         "REGISTRY_REVIEW_LLM_EXTRACTION_ENABLED": "true"
       }

@@ -134,6 +134,15 @@ Will guide an 8-stage structured compliance review of carbon credit project docu
 **Trigger phrases:** "registry review", "review project documents", "document compliance check"
 **MCPs used:** `registry-review`
 
+---
+
+### `/regen-update` — Check for upstream updates
+
+Checks published npm and PyPI versions for all four upstream MCP packages, compares against what's configured, fetches release notes for any newer versions, and cross-references available MCP tools against what the skills currently use — surfacing any new tools that have no skill coverage yet.
+
+**Trigger phrases:** "check for regen updates", "what's new in regen MCPs", "are there new regen tools", "update regen plugin"
+**MCPs used:** none (uses npm registry, PyPI API, and GitHub releases)
+
 ## Host Positioning
 
 This package is host-agnostic: any environment that supports MCP and markdown skills can use it.
@@ -157,15 +166,15 @@ These are needed only for specific capabilities. The core read-only functionalit
 
 ## Dependencies & Updates
 
-This plugin bundles four upstream MCP packages. They update independently from the skills here.
+This plugin is intentionally a thin routing layer — it exists to bundle the four upstream MCP packages and wire them to skills. The goal is to always run the latest published versions with no manual intervention.
 
-**MCP servers auto-update at runtime.** The setup commands use `@latest` (npm) and unpinned `uvx` (PyPI), so each time a server starts it fetches the current published version. You get upstream fixes and new tools automatically without reinstalling this plugin.
+**MCP servers always fetch the latest version on startup.** The `.mcp.json` is configured with `@latest` for npm packages and `--upgrade` for uvx/PyPI packages. Every time your MCP host restarts, all four servers pull their current published release. You get upstream fixes and new capabilities automatically.
 
-**Skills update when you update this plugin.** The markdown skill files (`skills/*/SKILL.md`) are part of this repo. They only change when you pull a new version or reinstall. If an upstream MCP server adds new tools, the skills here won't automatically know about them — that's a manual update to this repo.
+**Skills update when you update this plugin.** The skill files (`skills/*/SKILL.md`) live in this repo and only change when you pull a new version or reinstall. If an upstream MCP server gains new tools, the skills here won't automatically reference them — that's a deliberate update to this repo.
 
-**To get the latest of everything:** pull this repo (or reinstall the plugin), then restart your MCP host. The MCP servers will fetch their latest versions on next launch.
+**To update skill coverage:** run `/regen-update` to check for new MCP tools not yet covered by a skill, and to see what's changed in recent upstream releases.
 
-If you want to pin MCP server versions for stability, edit the `command`/`args` in your host's MCP config to specify an explicit version (e.g. `regen-koi-mcp@0.3.1` instead of `regen-koi-mcp@latest`).
+**To pin to a specific version** for stability, edit `command`/`args` in your host's local MCP config — e.g. replace `regen-koi-mcp@latest` with `regen-koi-mcp@0.3.1`.
 
 ## Links
 

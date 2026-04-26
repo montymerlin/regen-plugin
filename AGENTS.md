@@ -27,7 +27,8 @@ regen-network-plugin/
 │   ├── regen-portfolio/
 │   ├── regen-footprint/
 │   ├── regen-code/
-│   └── regen-review/
+│   ├── regen-review/
+│   └── regen-update/
 ├── AGENTS.md                # Canonical repo instructions
 ├── CLAUDE.md                # Claude compatibility wrapper
 ├── CHANGELOG.md
