@@ -2,9 +2,11 @@
 
 Access the Regen Network ecosystem through a host-agnostic MCP + skills package: knowledge commons, blockchain ledger, ecological credit markets, and AI compute footprinting.
 
+This plugin is an integration layer — it bundles four independently maintained upstream MCP servers and nine skills into a single installable package. The MCP servers are developed and published separately by the Regen Network and Gaia AI teams; this repo wires them together with skills, documentation, and host-specific packaging so they work as a coherent whole.
+
 ## What is Regen Network?
 
-Regen Network is a public blockchain purpose-built for ecological assets. Built on the Cosmos SDK, it provides an on-chain registry for verified ecological outcomes — primarily **ecocredits**, which represent quantified, verified improvements to land, biodiversity, or climate.
+[Regen Network](https://regen.network) is a public blockchain purpose-built for ecological assets. Built on the Cosmos SDK, it provides an on-chain registry for verified ecological outcomes — primarily **ecocredits**, which represent quantified, verified improvements to land, biodiversity, or climate.
 
 Key parts of the ecosystem this plugin connects to:
 
@@ -13,23 +15,13 @@ Key parts of the ecosystem this plugin connects to:
 - **Regen Compute** — connects AI compute usage to verified ecological credit retirement. Estimates the energy and CO2 cost of an AI session and provides a direct path to retire ecocredits as compensation.
 - **Registry Review** — an LLM-assisted workflow for reviewing carbon credit project documents against methodology requirements, producing structured compliance reports.
 
-### Ecocredit types on Regen Network
-
-| Code | Type | What it represents |
-|------|------|-------------------|
-| C | Carbon | Verified carbon sequestration or emissions reduction |
-| BT | Biodiversity / Terrasos | Habitat conservation and biodiversity impact |
-| KSH | Kilo-Sheep-Hour | Pasture management and grazing outcomes |
-| MBS | Marine Biodiversity Stewardship | Ocean ecosystem health |
-| USS | Umbrella Species Stewardship | Habitat protection for keystone species |
-
 ## MCP Servers
 
 Four MCP servers ship with this package, each connecting to a different layer of the Regen ecosystem:
 
 ### `regen-koi` — Knowledge Commons
 
-**Package:** `regen-koi-mcp` (npm)
+**Package:** [`regen-koi-mcp`](https://github.com/gaiaaiagent/regen-koi-mcp) (npm) — maintained by Gaia AI
 
 Connects to the KOI semantic index — Regen's living knowledge base with 86,000+ indexed documents. Supports three search modes (lexical BM25, semantic vector, and hypothetical document embedding), entity resolution (people, projects, organisations), knowledge graph traversal, SPARQL queries over the linked data graph, and code graph queries for the Regen Ledger codebase itself.
 
@@ -37,7 +29,7 @@ Used by: `/regen-search`, `/regen-digest`, `/regen-code`
 
 ### `regen-network` — Regen Ledger Blockchain
 
-**Package:** `regen-python-mcp` (PyPI)
+**Package:** [`regen-python-mcp`](https://github.com/gaiaaiagent/regen-python-mcp) (PyPI) — maintained by Gaia AI
 
 Connects to Regen Ledger via gRPC. Exposes read-only queries across: ecocredit classes, projects, and batches; marketplace sell orders; on-chain governance proposals, votes, tallies, and parameters; staking, delegation, and validator data; bank balances and supply; and community pool.
 
@@ -45,7 +37,7 @@ Used by: `/regen-credits`, `/regen-market`, `/regen-governance`, `/regen-portfol
 
 ### `regen-compute` — AI Footprint & Credit Retirement
 
-**Package:** `regen-compute` (npm)
+**Package:** [`regen-compute`](https://github.com/regen-network/regen-compute) (npm) — maintained by Regen Network
 
 Connects to the Regen Compute service. Estimates the energy and CO2 footprint of an AI session, browses available credits on the marketplace, and initiates credit retirement — either via a Regen Marketplace credit card link (no config required) or direct on-chain via mnemonic. Also supports cross-chain token payments via ecoBridge (50+ tokens across 10+ blockchains).
 
@@ -53,7 +45,7 @@ Used by: `/regen-footprint`, `/regen-credits`, `/regen-market`
 
 ### `registry-review` — Project Document Review
 
-**Package:** `registry-review-mcp` (PyPI)
+**Package:** [`registry-review-mcp`](https://github.com/gaiaaiagent/regen-registry-review-mcp) (PyPI) — maintained by Gaia AI
 
 Runs an 8-stage structured review of carbon credit project documents against registry methodology requirements: document discovery, requirement mapping, evidence extraction, cross-document validation, and report generation. Requires an Anthropic API key for LLM-assisted extraction.
 
@@ -163,15 +155,27 @@ These are needed only for specific capabilities. The core read-only functionalit
 | `ECOBRIDGE_EVM_MNEMONIC` | `regen-compute` | Enable cross-chain token payments via ecoBridge |
 | `REGISTRY_REVIEW_ANTHROPIC_API_KEY` | `registry-review` | Required for LLM-powered document extraction in registry review |
 
+## Dependencies & Updates
+
+This plugin bundles four upstream MCP packages. They update independently from the skills here.
+
+**MCP servers auto-update at runtime.** The setup commands use `@latest` (npm) and unpinned `uvx` (PyPI), so each time a server starts it fetches the current published version. You get upstream fixes and new tools automatically without reinstalling this plugin.
+
+**Skills update when you update this plugin.** The markdown skill files (`skills/*/SKILL.md`) are part of this repo. They only change when you pull a new version or reinstall. If an upstream MCP server adds new tools, the skills here won't automatically know about them — that's a manual update to this repo.
+
+**To get the latest of everything:** pull this repo (or reinstall the plugin), then restart your MCP host. The MCP servers will fetch their latest versions on next launch.
+
+If you want to pin MCP server versions for stability, edit the `command`/`args` in your host's MCP config to specify an explicit version (e.g. `regen-koi-mcp@0.3.1` instead of `regen-koi-mcp@latest`).
+
 ## Links
 
 - [Regen Network](https://regen.network)
 - [Regen Marketplace](https://app.regen.network)
 - [Regen Compute](https://compute.regen.network)
-- [KOI MCP source](https://github.com/gaiaaiagent/regen-koi-mcp)
-- [Ledger MCP source](https://github.com/gaiaaiagent/regen-python-mcp)
-- [Compute source](https://github.com/regen-network/regen-compute)
-- [Registry Review source](https://github.com/gaiaaiagent/regen-registry-review-mcp)
+- [KOI MCP](https://github.com/gaiaaiagent/regen-koi-mcp)
+- [Ledger MCP](https://github.com/gaiaaiagent/regen-python-mcp)
+- [Compute MCP](https://github.com/regen-network/regen-compute)
+- [Registry Review MCP](https://github.com/gaiaaiagent/regen-registry-review-mcp)
 - [Upstream plugin marketplace](https://github.com/regen-network/regen-ai-claude)
 
 ## License
