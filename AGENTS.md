@@ -46,6 +46,15 @@ regen-network-plugin/
 - `.claude-plugin/` is Claude-specific packaging metadata, not the source of truth for skills or MCP configuration.
 - Keep host recommendations in docs where they reflect real UX differences, but do not position the repo itself as single-host.
 
+## Packaging for Cowork
+
+Cowork install is via a `.plugin` zip uploaded through Claude Desktop. Two paths:
+
+1. **Use a packager script** (e.g. the `cowork-plugin-packager` skill if installed in your workspace) — runs validation, packaging, and verification. Produces `regen-network-<version>.plugin`.
+2. **Build by hand** — see `SETUP.md` § "Cowork" for the raw `zip` command and verification steps.
+
+`SETUP.md` is the single source of truth for install pathways across Cowork, Claude Code CLI, Cursor (MCP), VS Code (MCP), and other MCP-compatible hosts — read it before changing install or packaging behavior.
+
 ## Runtime Conventions
 
 - Probe MCP availability before invoking skills that depend on specific servers.

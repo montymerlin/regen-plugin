@@ -1,5 +1,5 @@
 ---
-name: regen:code
+name: regen-code
 description: >
   Explore the Regen Network codebase. Use when the user asks about "regen code",
   "regen architecture", "regen codebase", "regen tech stack", "trace call chain",

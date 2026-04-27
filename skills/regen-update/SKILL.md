@@ -1,5 +1,5 @@
 ---
-name: regen:update
+name: regen-update
 description: >
   Check for updates across the regen-network plugin's upstream MCP dependencies
   and skill coverage. Use when the user asks to "check for regen updates",

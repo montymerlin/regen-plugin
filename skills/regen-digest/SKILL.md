@@ -1,5 +1,5 @@
 ---
-name: regen:digest
+name: regen-digest
 description: >
   Generate a weekly activity digest for Regen Network. Use when the user asks
   for a "regen digest", "what's new at regen", "regen weekly summary",

@@ -1,0 +1,32 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Build artifacts
+_dist/
+*.plugin
+*.zip
+
+# Worktrees / branches
+.worktrees/
+
+# Logs
+*.log
+
+# Node
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Claude Code per-user settings (NOT committed; project-level instructions belong in AGENTS.md)
+.claude/settings.local.json

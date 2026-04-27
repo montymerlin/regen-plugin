@@ -1,5 +1,5 @@
 ---
-name: regen:footprint
+name: regen-footprint
 description: >
   Estimate and offset the ecological footprint of an AI session. Use when the
   user asks about "footprint", "offset my session", "offset AI usage",

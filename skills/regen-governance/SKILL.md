@@ -1,5 +1,5 @@
 ---
-name: regen:governance
+name: regen-governance
 description: >
   Query Regen Network governance activity. Use when the user asks about
   "regen governance", "proposals", "regen votes", "voting results",

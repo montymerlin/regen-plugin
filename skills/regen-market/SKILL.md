@@ -1,5 +1,5 @@
 ---
-name: regen:market
+name: regen-market
 description: >
   Analyse the Regen Network credit marketplace. Use when the user asks about
   "regen market", "credit prices", "sell orders", "market trends", "compare
