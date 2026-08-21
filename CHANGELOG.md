@@ -4,6 +4,12 @@ A narrative record of how this plugin evolves. Updated after significant work se
 
 ---
 
+## 2026-08-21 — Removed two unrunnable MCP servers
+
+Dropped `regen-network` (`uvx regen-python-mcp`) and `registry-review` (`uvx registry-review-mcp`) from `.mcp.json`. Both had been failing to start on every session, producing a persistent "Server disconnected" error toast. Verified upstream causes: `regen-python-mcp` crashes on import (`ModuleNotFoundError: No module named 'mcp.server.fastmcp'` — unpinned `mcp` dependency against a moved `FastMCP`), and `registry-review-mcp` is not published to PyPI. `regen-koi` and `regen-compute` remain and both connect cleanly.
+
+All ten skills stay installed, but `regen-review` now has no backend and `regen-code` loses its ledger-side MCP. **Flagged for v0.3.0**: README.md, SETUP.md, and AGENTS.md all still describe "four MCP servers" and need a docs pass; `regen-update` still checks four upstream packages. See Decision 004.
+
 ## 2026-04-27 — Plugin audit pass + skill name fix
 
 Audited the plugin against `/create-cowork-plugin` standards. Fixed the **triple-namespacing** skill `name:` frontmatter bug across all 10 SKILL.md files: plugin name is `regen-network`, dirs are `regen-<x>`, and `name:` was `regen:<x>` — runtime IDs became `regen-network:regen:<x>`. Fixed to bare dir names (e.g. `regen-code`, `regen-credits`); runtime IDs are now `regen-network:regen-<x>`.

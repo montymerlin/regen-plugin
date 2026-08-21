@@ -39,6 +39,31 @@ Architectural decisions for the regen-network plugin, in lightweight ADR format.
 
 ---
 
+## Decision 004 — Drop the two unrunnable MCP servers from `.mcp.json` (2026-08-21)
+
+**Context:** Two of the four bundled MCP servers could not start, and every Claude Code session opened with a "MCP regen-network: Server disconnected" error toast. Both failures were verified upstream, not local misconfiguration:
+
+- `regen-network` (`uvx regen-python-mcp`) installs, then crashes on import with `ModuleNotFoundError: No module named 'mcp.server.fastmcp'`. The published package declares an unpinned `mcp` dependency and `FastMCP` has since moved out of `mcp.server.fastmcp`, so a fresh resolve always pulls an incompatible SDK.
+- `registry-review` (`uvx registry-review-mcp`) is not on PyPI at all: "registry-review-mcp was not found in the package registry." The README and SETUP.md both link a PyPI page that does not resolve to an installable distribution.
+
+Neither server has ever been reachable from this machine, so removing them costs no working capability.
+
+**Decision:** Remove the `regen-network` and `registry-review` entries from `.mcp.json`, keeping `regen-koi` and `regen-compute`, which both connect. Skills stay installed. Documentation still describes four MCP servers; that drift is deliberately left for a v0.3.0 docs pass rather than rewritten piecemeal here.
+
+**Consequences:**
+- Sessions start clean — all remaining servers report Connected
+- `regen-review` has no backend and should be treated as non-functional until `registry-review-mcp` is published
+- `regen-code`'s ledger-side lookups lose the Python MCP; the KOI code-graph tools still work
+- `regen-update` checks four packages and will now report on two that are no longer wired in
+- README.md, SETUP.md, and AGENTS.md still say "four MCP servers" and are now inaccurate
+
+**Alternatives Considered:**
+- *Fix `regen-python-mcp` upstream* — the right long-term fix (pin `mcp`, or migrate to the current `FastMCP` import path), but it is a separate change in a repo we do not own
+- *Disable the whole plugin* — rejected. It would also drop two healthy servers and all ten skills
+- *Leave them in and dismiss the toast each session* — rejected. A server that cannot start should not be declared
+
+---
+
 ## Decision 003 — Reframe regen-network as a host-agnostic package (2026-04-22)
 
 **Context:** The plugin had already been distributed to multiple hosts, but the repo still read as Claude-first and Cowork-led in a way that overstated the host identity of the package itself. The underlying product is really a bundle of MCP server definitions, markdown skills, and setup guidance that can be used anywhere MCP works. Cowork may still be the smoothest UX, but it should be described as a recommended host experience, not as the product’s defining context.
